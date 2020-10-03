@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SEDC.Travel.Domain.Contract\SEDC.Travel.Domain.Contract.csproj" />
+    <ProjectReference Include="..\SEDC.Travel.Service.Contract\SEDC.Travel.Service.Contract.csproj" />
+    <ProjectReference Include="..\SEDC.Travel.Service.Model\SEDC.Travel.Service.Model.csproj" />
+  </ItemGroup>
+
+</Project>
