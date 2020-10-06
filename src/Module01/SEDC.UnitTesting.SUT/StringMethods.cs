@@ -6,6 +6,9 @@ namespace SEDC.UnitTesting.SUT
     {
         public string Reverse(string value)
         {
+            if (string.IsNullOrEmpty(value))
+                throw new ArgumentNullException();
+
             var arr = value.ToCharArray();
             Array.Reverse(arr);
             return new string(arr);
