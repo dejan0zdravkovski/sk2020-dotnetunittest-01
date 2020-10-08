@@ -48,5 +48,21 @@ namespace SEDC.UnitTesting.SUT.Tests._04
         {
             Assert.Catch<Exception>(() => sm.Reverse(null));
         }
+
+
+        [TestCase("SEDC", "CDES")]
+        [TestCase("REDC", "CDES")]
+        [TestCase("SE", "ES")]
+        [Order(1)]
+        public void Reverse_TestCase_TheReturedResultShouldBeCorrect(string str, string expStr)
+        {
+            var result = sm.Reverse(str);
+
+            Assert.AreEqual(expStr, result);
+        }
+
+        //TODO: Add test case for [SetCulture("hr-HR")]
+
+
     }
 }
