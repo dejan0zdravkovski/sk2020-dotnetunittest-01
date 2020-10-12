@@ -26,8 +26,6 @@ XUnit is a free, open source, community-focused unit testing tool for the .NET F
     - CMD  
   - Debuging  
   
-  # Skip
- 
  # Exceptions
   - Use assertion as Assert.Throws
  
