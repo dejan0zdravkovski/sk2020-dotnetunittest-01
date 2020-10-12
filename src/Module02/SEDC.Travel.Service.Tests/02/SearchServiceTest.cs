@@ -1,11 +1,12 @@
-﻿using Moq;
+﻿using System;
+using System.Collections.Generic;
+
+using Xunit;
+using Moq;
 using SEDC.Travel.Domain.Contract;
 using SEDC.Travel.Domain.Model;
 using SEDC.Travel.Service.Model.DTO;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+
 
 namespace SEDC.Travel.Service.Tests._02
 {

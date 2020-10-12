@@ -1,8 +1,7 @@
-﻿using SEDC.Travel.Domain.Model;
+﻿using System.Collections.Generic;
+
+using SEDC.Travel.Domain.Model;
 using SEDC.Travel.Service.Model.DTO;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SEDC.Travel.Service.Tests._02
 {

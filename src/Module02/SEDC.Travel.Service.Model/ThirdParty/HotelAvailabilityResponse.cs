@@ -13,14 +13,7 @@ namespace SEDC.Travel.Service.Model.ThirdParty
 
     public class HotelResponse
     {
-        public int Id { get; set; }
         public string Code { get; set; }
-        public List<HotelRoomCombination> RoomCombinations { get; set; }
-    }
-
-    public class HotelRoomCombination
-    {
-        public int RoomsRequested { get; set; }
         public List<HotelAvailableRoom> AvailableRooms { get; set; }
     }
 

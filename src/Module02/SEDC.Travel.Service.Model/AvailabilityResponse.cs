@@ -15,12 +15,11 @@ namespace SEDC.Travel.Service.Model
     {
         public int Id { get; set; }
         public string Code { get; set; }
-        public List<RoomCombination> RoomCombinations { get; set; }
-    }
+        
+        public string Description { get; set; }
+        public string Address { get; set; }
+        public string Web { get; set; }
 
-    public class RoomCombination
-    {
-        public decimal FullPrice { get; set; }
         public List<AvailableRoom> AvailableRooms { get; set; }
     }
 

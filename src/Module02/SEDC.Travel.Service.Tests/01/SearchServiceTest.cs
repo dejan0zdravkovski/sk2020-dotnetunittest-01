@@ -1,11 +1,11 @@
-﻿using Moq;
+﻿using System;
+using System.Collections.Generic;
+
+using Moq;
+using Xunit;
 using SEDC.Travel.Domain.Contract;
 using SEDC.Travel.Domain.Model;
 using SEDC.Travel.Service.Model.DTO;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
 
 namespace SEDC.Travel.Service.Tests
 {
@@ -258,9 +258,7 @@ namespace SEDC.Travel.Service.Tests
             //Assert
             Assert.Null(result.Web);
         }
-
-
-
+        
         #endregion
 
     }
