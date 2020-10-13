@@ -4,8 +4,8 @@ namespace SEDC.Travel.Service.Model
 {
     public class SearchRequest
     {
-        public DateTime FromDate { get; set; }
-        public DateTime ToDate { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
         public int Adults { get; set; }
         public int Children { get; set; }
         public int Infants { get; set; }

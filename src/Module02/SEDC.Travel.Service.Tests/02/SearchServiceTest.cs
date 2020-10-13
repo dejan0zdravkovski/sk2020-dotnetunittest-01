@@ -237,5 +237,20 @@ namespace SEDC.Travel.Service.Tests._02
 
         #endregion
 
+        [Fact]
+        public void Search_VerifyMethodsCalls_ShouldBeCalledOnce()
+        {
+            //Arrange
+            mockHotelRepository.Setup(x => x.GetHotelsByCategory(It.IsAny<int>())).Returns(new List<Hotel>());
+
+            //Act
+            var searchService = new SearchService(mockCountryRepository.Object, mockHotelRepository.Object);
+            searchService.Search(_hotelFixtureData.ValidRequestCase1);
+
+            //Assert
+            mockHotelRepository.Verify(x => x.GetHotelsByCategory(It.IsAny<int>()), Times.Once);
+            mockHotelRepository.Verify(x => x.GetHotels(), Times.Never);
+        }
+
     }
 }

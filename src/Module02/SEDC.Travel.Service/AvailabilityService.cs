@@ -5,6 +5,7 @@ using SEDC.Travel.Service.Contract;
 using SEDC.Travel.Service.Model;
 using SEDC.Travel.Service.ThirdParty;
 using SEDC.Travel.Service.Model.ThirdParty;
+using System;
 
 namespace SEDC.Travel.Service
 {
@@ -23,31 +24,9 @@ namespace SEDC.Travel.Service
 
         public AvailabilityResponse CheckAvailability(SearchRequest request, List<string> hotelCodes)
         {
-            if (request.FromDate == null)
-            {
+            ValidateSearchRequest(request);
 
-            }
-            if (request.ToDate == null)
-            {
-
-            }
-
-            if (request.ToDate < request.FromDate)
-            {
-
-            }
-
-            if (request.Adults < 1)
-            {
-
-            }
-
-            if (request.Adults < request.Rooms)
-            {
-
-            }
-
-            var hoteSearchRequest = Request(request);
+            var hoteSearchRequest = Request(request, hotelCodes);
 
             var response = _hotelAvailability.SearchHotelAvailability(hoteSearchRequest);
 
@@ -90,12 +69,12 @@ namespace SEDC.Travel.Service
             return result;
         }
 
-        private HotelAvailabilityRequest Request(SearchRequest searchRequest)
+        public HotelAvailabilityRequest Request(SearchRequest searchRequest, List<string> hotelCodes)
         {
             var request = new HotelAvailabilityRequest();
-            request.CheckIn = searchRequest.FromDate;
-            request.CheckOut = searchRequest.ToDate;
-            request.Nights = (searchRequest.ToDate - searchRequest.FromDate).Days;
+            request.CheckIn = searchRequest.FromDate.Value;
+            request.CheckOut = searchRequest.ToDate.Value;
+            request.Nights = (searchRequest.ToDate.Value - searchRequest.FromDate.Value).Days;
 
             request.Adults = searchRequest.Adults;
             request.Children = searchRequest.Children;
@@ -103,8 +82,38 @@ namespace SEDC.Travel.Service
             request.Rooms = searchRequest.Rooms;
             request.HotelCategory = searchRequest.HotelCategory;
 
+            request.HotelList = hotelCodes;
+
             return request;
         }
+
+        public void ValidateSearchRequest(SearchRequest searchRequest)
+        {
+            if (searchRequest.FromDate == null)
+            {
+                throw new Exception("From Date must have value");
+            }
+            if (searchRequest.ToDate == null)
+            {
+                throw new Exception("To Date must have value");
+            }
+
+            if (searchRequest.ToDate < searchRequest.FromDate)
+            {
+                throw new Exception("To Date must be bigger than From Date");
+            }
+
+            if (searchRequest.Adults < 1)
+            {
+                throw new Exception("Must have at least one Adult");
+            }
+
+            if (searchRequest.Adults < searchRequest.Rooms)
+            {
+                throw new Exception("Must have at least one Adult per room");
+            }
+        }
+
 
     }
 }

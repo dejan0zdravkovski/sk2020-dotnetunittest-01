@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using SEDC.Travel.Domain.Model;
+using SEDC.Travel.Service.Model;
 using SEDC.Travel.Service.Model.DTO;
+using SEDC.Travel.Service.Model.ThirdParty;
 
 namespace SEDC.Travel.Service.Tests._02
 {
@@ -12,12 +15,18 @@ namespace SEDC.Travel.Service.Tests._02
         public List<Hotel> HotelList { get; set; }
         public HotelCategory MockedHotelCategory { get; set; }
 
+        public HotelAvailabilityResponse MockedHotelAvailabilityResponse { get; set; }
+
+        public SearchRequest ValidRequestCase1 { get; set; }
+
         public HotelFixtureData()
         {
             MockedHotel = SetMockedHotel();
             MockedExpectedHotel = SetMockedExpectedHotel();
             HotelList = SetHotelList();
             MockedHotelCategory = SetHotelCategory();
+            MockedHotelAvailabilityResponse = SetMockedHotelAvailabilityResponse();
+            ValidRequestCase1 = SetValidRequestCase1();
         }
 
         private Hotel SetMockedHotel()
@@ -72,6 +81,48 @@ namespace SEDC.Travel.Service.Tests._02
         public HotelCategory SetHotelCategory()
         {
             return new HotelCategory { Id = 1, Code = "03", Description = "4 STARS" };
+        }
+
+        private HotelAvailabilityResponse SetMockedHotelAvailabilityResponse()
+        {
+            var response = new HotelAvailabilityResponse();
+            response.Count = 2;
+            response.CheckIn = DateTime.Now.AddDays(30);
+            response.CheckOut = DateTime.Now.AddDays(35);
+
+            var availableHotels = new List<HotelResponse>();
+
+            var availableHotelFirst = new HotelResponse();
+            availableHotelFirst.Code = "01";
+            availableHotelFirst.AvailableRooms = new List<HotelAvailableRoom> {
+                 new HotelAvailableRoom { Id = 1, Code = "ROM_01", Price = 100},
+            };
+            availableHotels.Add(availableHotelFirst);
+
+
+            var availableHotelSecond = new HotelResponse();
+            availableHotelSecond.Code = "02";
+            availableHotelSecond.AvailableRooms = new List<HotelAvailableRoom> {
+                 new HotelAvailableRoom { Id = 3, Code = "ROM_03", Price = 150},
+            };
+            availableHotels.Add(availableHotelSecond);
+
+
+            response.AvailableHotels = availableHotels;
+            return response;
+        }
+
+        private SearchRequest SetValidRequestCase1()
+        {
+            return new SearchRequest
+            {
+                FromDate = DateTime.Now.AddDays(10),
+                ToDate = DateTime.Now.AddDays(15),
+                Adults = 2,
+                Children = 4,
+                Rooms = 2,
+                HotelCategory = 1,
+            };
         }
     }
 }

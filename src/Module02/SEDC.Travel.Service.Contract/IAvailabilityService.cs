@@ -10,5 +10,8 @@ namespace SEDC.Travel.Service.Contract
         AvailabilityResponse CheckAvailability(SearchRequest request, List<string> hotelCodes);
 
         AvailabilityResponse ProcessAvailability(HotelAvailabilityResponse response);
+
+        void ValidateSearchRequest(SearchRequest searchRequest);
+        HotelAvailabilityRequest Request(SearchRequest searchRequest, List<string> hotelCodes);
     }
 }
