@@ -6,6 +6,7 @@ using Xunit;
 using SEDC.Travel.Domain.Contract;
 using SEDC.Travel.Domain.Model;
 using SEDC.Travel.Service.Model.DTO;
+using FluentAssertions;
 
 namespace SEDC.Travel.Service.Tests
 {
@@ -25,7 +26,8 @@ namespace SEDC.Travel.Service.Tests
             var result = searchService.GetHotels();
 
             //Assert
-            Assert.Empty(result);
+            //Assert.Empty(result);
+            result.Should().BeEmpty();
         }
 
         [Fact]
@@ -40,7 +42,8 @@ namespace SEDC.Travel.Service.Tests
             var result = searchService.GetHotels();
 
             //Assert
-            Assert.IsType<List<HotelDto>>(result);
+            //Assert.IsType<List<HotelDto>>(result);
+            result.Should().BeOfType<List<HotelDto>>();
         }
 
         [Fact]
@@ -56,7 +59,8 @@ namespace SEDC.Travel.Service.Tests
             var result = searchService.GetHotels();
 
             //Assert
-            Assert.IsType(expected, result);
+            //Assert.IsType(expected, result);
+            result.Should().BeOfType(expected);
         }
 
         [Fact]
@@ -83,7 +87,8 @@ namespace SEDC.Travel.Service.Tests
             var result = searchService.GetHotels();
 
             //Assert
-            Assert.Equal(mockedHotels.Count, result.Count);
+            //Assert.Equal(mockedHotels.Count, result.Count);
+            result.Should().HaveCount(mockedHotels.Count);
 
         }
 
@@ -111,8 +116,9 @@ namespace SEDC.Travel.Service.Tests
             var searchService = new SearchService(mockCountryRepository.Object, mockHotelRepository.Object);
 
             //Assert
-            Assert.Throws<Exception>(() => searchService.GetHotels());
-
+            //Assert.Throws<Exception>(() => searchService.GetHotels());
+            Action result = () => searchService.GetHotels();
+            result.Should().Throw<Exception>();
         }
 
         [Fact]
@@ -139,8 +145,10 @@ namespace SEDC.Travel.Service.Tests
             var searchService = new SearchService(mockCountryRepository.Object, mockHotelRepository.Object);
 
             //Assert
-            var result = Assert.Throws<Exception>(() => searchService.GetHotels());
-            Assert.Equal(expMsg, result.Message);
+            //var result = Assert.Throws<Exception>(() => searchService.GetHotels());
+            //Assert.Equal(expMsg, result.Message);
+            Action result = () => searchService.GetHotels();
+            result.Should().Throw<Exception>().WithMessage(expMsg);
         }
 
         #endregion
@@ -204,18 +212,30 @@ namespace SEDC.Travel.Service.Tests
             var result = searchService.MapHotelData(hotel);
 
             //Assert
-            Assert.Equal(expectedHotel.Id, result.Id);
-            Assert.Equal(expectedHotel.Code, result.Code);
-            Assert.Equal(expectedHotel.Name, result.Name);
-            Assert.Equal(expectedHotel.Description, result.Description);
-            Assert.Equal(expectedHotel.City, result.City);
-            Assert.Equal(expectedHotel.Address, result.Address);
-            Assert.Equal(expectedHotel.Email, result.Email);
-            Assert.Equal(expectedHotel.CountryId, result.CountryId);
-            Assert.Equal(expectedHotel.HotelCategoryId, result.HotelCategoryId);
-            Assert.Equal(expectedHotel.Web, result.Web);
-            Assert.Equal(expectedHotel.CountryName, result.CountryName);
-            Assert.Equal(expectedHotel.HotelCategory, result.HotelCategory);
+            //Assert.Equal(expectedHotel.Id, result.Id);
+            //Assert.Equal(expectedHotel.Code, result.Code);
+            //Assert.Equal(expectedHotel.Name, result.Name);
+            //Assert.Equal(expectedHotel.Description, result.Description);
+            //Assert.Equal(expectedHotel.City, result.City);
+            //Assert.Equal(expectedHotel.Address, result.Address);
+            //Assert.Equal(expectedHotel.Email, result.Email);
+            //Assert.Equal(expectedHotel.CountryId, result.CountryId);
+            //Assert.Equal(expectedHotel.HotelCategoryId, result.HotelCategoryId);
+            //Assert.Equal(expectedHotel.Web, result.Web);
+            //Assert.Equal(expectedHotel.CountryName, result.CountryName);
+            //Assert.Equal(expectedHotel.HotelCategory, result.HotelCategory);
+            result.Id.Should().Be(expectedHotel.Id);
+            result.Code.Should().Be(expectedHotel.Code);
+            result.Name.Should().Be(expectedHotel.Name);
+            result.Description.Should().Be(expectedHotel.Description);
+            result.City.Should().Be(expectedHotel.City);
+            result.Address.Should().Be(expectedHotel.Address);
+            result.Email.Should().Be(expectedHotel.Email);
+            result.CountryId.Should().Be(expectedHotel.CountryId);
+            result.HotelCategoryId.Should().Be(expectedHotel.HotelCategoryId);
+            result.Web.Should().Be(expectedHotel.Web);
+            result.CountryName.Should().Be(expectedHotel.CountryName);
+            result.HotelCategory.Should().Be(expectedHotel.HotelCategory);
         }
 
         [Fact]
@@ -256,10 +276,28 @@ namespace SEDC.Travel.Service.Tests
             var result = searchService.MapHotelData(hotel);
 
             //Assert
-            Assert.Null(result.Web);
+            //Assert.Null(result.Web);
+            result.Web.Should().BeNull();
         }
         
         #endregion
+
+        [Fact]
+        public void GetCountries_HasCountries_ResultShouldBeOrderedByName()
+        {
+            var mockedCounties = new List<Country> {
+                new Country {Id = 1, CountryName = "Macedonia" },
+                new Country {Id = 2, CountryName = "Albania"}
+            };
+            var mockCountryRepository = new Mock<ICountryRepository>();
+            var mockHotelRepository = new Mock<IHotelRepository>();
+            mockCountryRepository.Setup(x => x.GetCountries()).Returns(mockedCounties);
+
+            var searchService = new SearchService(mockCountryRepository.Object, mockHotelRepository.Object);
+            var result = searchService.GetCountries();
+
+            result.Should().BeInAscendingOrder(x => x.CountryName);
+        }
 
     }
 }

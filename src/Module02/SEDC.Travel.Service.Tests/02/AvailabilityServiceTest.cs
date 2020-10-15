@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using FluentAssertions;
+using Moq;
 using SEDC.Travel.Domain.Contract;
 using SEDC.Travel.Service.Contract;
 using SEDC.Travel.Service.Model.ThirdParty;
@@ -6,6 +7,7 @@ using SEDC.Travel.Service.Tests.TestFixtureData;
 using SEDC.Travel.Service.ThirdParty;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace SEDC.Travel.Service.Tests._02
@@ -139,10 +141,11 @@ namespace SEDC.Travel.Service.Tests._02
             //Assert
             foreach (var item in result.AvailableHotels)
             {
-                foreach (var room in item.AvailableRooms)
-                {
-                    Assert.True(room.NewPrice>0);
-                }
+                item.AvailableRooms.Select(x => x.NewPrice).Should().NotContainNulls();
+                //foreach (var room in item.AvailableRooms)
+                //{
+                //    Assert.True(room.NewPrice>0);
+                //}
             }
         }
 
@@ -172,7 +175,8 @@ namespace SEDC.Travel.Service.Tests._02
             {
                 foreach (var room in item.AvailableRooms)
                 {
-                    Assert.True(room.NewPrice > room.Price);
+                    //Assert.True(room.NewPrice > room.Price);
+                    room.NewPrice.Should().BeGreaterThan(room.Price);
                 }
             }
         }
