@@ -249,7 +249,7 @@ namespace SEDC.Travel.Service.Tests._02
 
             //Assert
             mockHotelRepository.Verify(x => x.GetHotelsByCategory(It.IsAny<int>()), Times.Once);
-            mockHotelRepository.Verify(x => x.GetHotels(), Times.Never);
+            mockHotelRepository.Verify(x => x.GetHotels(), Times.Once);
         }
 
     }
