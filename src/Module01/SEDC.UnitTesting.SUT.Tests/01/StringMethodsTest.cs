@@ -9,6 +9,7 @@ namespace SEDC.UnitTesting.SUT.Tests
     public class StringMethodsTest
     {
         [Test]
+        [Category("StringMethods")]
         public void Reverse_StringThatIsNotEmptyOrNull_TheReturedResultShouldBeCorrect()
         {
             var sm = new StringMethods();
@@ -21,6 +22,7 @@ namespace SEDC.UnitTesting.SUT.Tests
         }
 
         [Test]
+        [Category("StringMethods")]
         public void Reverse_StringIsNull_ShouldReturnException()
         {
             var sm = new StringMethods();

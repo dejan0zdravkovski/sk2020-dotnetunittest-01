@@ -16,6 +16,7 @@ namespace SEDC.UnitTesting.SUT.Tests._02
         }
 
         [Test]
+        [Category("StringMethods")]
         public void Reverse_StringThatIsNotEmptyOrNull_TheReturedResultShouldBeCorrect()
         {
             var str = "SEDC";
@@ -27,6 +28,7 @@ namespace SEDC.UnitTesting.SUT.Tests._02
         }
 
         [Test]
+        [Category("StringMethods")]
         public void Reverse_StringIsNull_ShouldReturnException()
         {
             Assert.Catch<Exception>(() => sm.Reverse(null));
