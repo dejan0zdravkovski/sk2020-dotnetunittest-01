@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace SEDC.UnitTesting.SUT.Tests._04
@@ -172,8 +173,8 @@ namespace SEDC.UnitTesting.SUT.Tests._04
             get
             {
                 var testCases = new List<TestCaseData>();
-
-                using (var fs = File.OpenRead(@"C:\Users\j_mar\Desktop\GitProjects\sedc-codecademy\group01\src\Module01\SEDC.UnitTesting.SUT.Tests\04\test.csv"))
+                var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"04\test.csv");
+                using (var fs = File.OpenRead(path))
                 using (var sr = new StreamReader(fs))
                 {
                     string line = string.Empty;

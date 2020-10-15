@@ -7,7 +7,6 @@ namespace SEDC.UnitTesting.SUT
     {
         public string Reverse(string value)
         {
-            Thread.Sleep(60000);
             if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException();
 

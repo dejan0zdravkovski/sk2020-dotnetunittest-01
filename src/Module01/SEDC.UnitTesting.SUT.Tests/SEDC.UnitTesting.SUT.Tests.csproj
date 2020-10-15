@@ -16,4 +16,10 @@
     <ProjectReference Include="..\SEDC.UnitTesting.SUT\SEDC.UnitTesting.SUT.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="04\test.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

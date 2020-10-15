@@ -22,7 +22,7 @@ namespace SEDC.UnitTesting.SUT.Tests
         }
 
         [Test]
-        [Ignore("FindNthLargestNumber method needs to be refactored", Until ="2020-10-07")]
+        [Ignore("FindNthLargestNumber method needs to be refactored")]
         public void FindNthLargestNumber_TheListOfNumbersIsEmpty_TheReturnedResultShouldBeCorrect()
         {
             var im = new IntegerMethods();

@@ -41,7 +41,7 @@ namespace SEDC.UnitTesting.SUT.Tests._04
 
         [Test]
         [Order(2)]
-        [Ignore("FindNthLargestNumber method needs to be refactored", Until = "2020-10-07")]
+        [Ignore("FindNthLargestNumber method needs to be refactored")]
         public void FindNthLargestNumber_TheListOfNumbersIsEmpty_TheReturnedResultShouldBeCorrect()
         {
             int nthLargestNumber = 3;

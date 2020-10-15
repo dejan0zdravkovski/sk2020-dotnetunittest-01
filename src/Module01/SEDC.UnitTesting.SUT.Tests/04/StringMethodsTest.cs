@@ -51,7 +51,7 @@ namespace SEDC.UnitTesting.SUT.Tests._04
 
 
         [TestCase("SEDC", "CDES")]
-        [TestCase("REDC", "CDES")]
+        [TestCase("REDC", "CDER")]
         [TestCase("SE", "ES")]
         [Order(1)]
         public void Reverse_TestCase_TheReturedResultShouldBeCorrect(string str, string expStr)
