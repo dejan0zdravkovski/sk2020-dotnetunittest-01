@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,7 +25,8 @@ namespace SEDC.UnitTesting.SUT.Tests
             var result = vm.IsLeapYear(1996);
 
             //Assert
-            Assert.IsTrue(result);
+            //Assert.IsTrue(result);
+            result.Should().BeTrue();
         }
 
         [Test]
@@ -38,7 +40,8 @@ namespace SEDC.UnitTesting.SUT.Tests
             var result = vm.IsLeapYear(year);
 
             //Assert
-            Assert.IsTrue(result);
+            //Assert.IsTrue(result);
+            result.Should().BeTrue();
         }
 
         [Test]
@@ -52,7 +55,8 @@ namespace SEDC.UnitTesting.SUT.Tests
             var result = vm.IsLeapYear(year);
 
             //Assert
-            Assert.IsFalse(result);
+            //Assert.IsFalse(result);
+            result.Should().BeFalse();
         }
 
         [Test]
@@ -63,7 +67,10 @@ namespace SEDC.UnitTesting.SUT.Tests
             var vm = new BoolMethods();
 
             //Act + Assertsss
-            Assert.Throws<ArgumentException>(() => vm.IsLeapYear(year));
+            //Assert.Throws<ArgumentException>(() => vm.IsLeapYear(year));
+            Action result = () => vm.IsLeapYear(year);
+            result.Should().Throw<ArgumentException>();
+
         }
 
         [Test]
@@ -75,8 +82,12 @@ namespace SEDC.UnitTesting.SUT.Tests
             var vm = new BoolMethods();
 
             //Act + Assertsss
-            var result = Assert.Throws<ArgumentException>(() => vm.IsLeapYear(year));
-            Assert.AreEqual(expectedExceptionMsg, result.Message);
+            //var result = Assert.Throws<ArgumentException>(() => vm.IsLeapYear(year));
+            //Assert.AreEqual(expectedExceptionMsg, result.Message);
+            Action result = () => vm.IsLeapYear(year);
+            result.Should().Throw<ArgumentException>().WithMessage(expectedExceptionMsg);
+            //result.Should().Throw<ArgumentException>().WithInnerException<xx>().WithMessage(expectedExceptionMsg);
+
         }
 
         [Test]
