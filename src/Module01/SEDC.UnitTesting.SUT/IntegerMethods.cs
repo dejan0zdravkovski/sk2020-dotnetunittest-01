@@ -8,8 +8,8 @@ namespace SEDC.UnitTesting.SUT
     {
         public int CalculateNthFibonacciNumber(int n)
         {
-            //if (n < 0)
-            //    throw new ArgumentException("Value must be positive number");
+            if (n < 0)
+                throw new ArgumentException("Value must be positive number");
             if (n < 2)
                 return 1;
 
