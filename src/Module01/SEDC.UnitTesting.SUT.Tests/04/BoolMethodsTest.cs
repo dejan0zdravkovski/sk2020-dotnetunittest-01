@@ -173,7 +173,7 @@ namespace SEDC.UnitTesting.SUT.Tests._04
             get
             {
                 var testCases = new List<TestCaseData>();
-                var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"04\test.csv");
+                var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"04/test.csv");
                 using (var fs = File.OpenRead(path))
                 using (var sr = new StreamReader(fs))
                 {
