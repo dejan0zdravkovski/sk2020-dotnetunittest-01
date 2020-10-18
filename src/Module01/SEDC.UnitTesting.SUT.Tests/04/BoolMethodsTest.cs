@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Text;
+
+using NUnit.Framework;
 
 namespace SEDC.UnitTesting.SUT.Tests._04
 {
@@ -98,7 +98,6 @@ namespace SEDC.UnitTesting.SUT.Tests._04
             Assert.Catch<Exception>(() => vm.IsLeapYear(year));
         }
 
-
         [Test(Author = "SEDC")]
         public void BoolMethod_TheYeasIsNotLeapWithValues_TheReturnedResultShouldBeFalse([Values(1997, 2001)] int year, [Values(false)] bool expectedResult)
         {
@@ -110,7 +109,6 @@ namespace SEDC.UnitTesting.SUT.Tests._04
             //Assert
             Assert.AreEqual(expectedResult, result);
         }
-
 
         [TestCase(1996 , true)]
         [TestCase(1997, false)]
@@ -135,7 +133,6 @@ namespace SEDC.UnitTesting.SUT.Tests._04
         {
            return bm.IsLeapYear(year);
         }
-
 
         [TestCaseSource("TestCase")]
         public void BoolMethod_WithGivenTestCaseSource_TheReturnedResultShouldBeCorrect(int year, bool expectedResult)
@@ -166,8 +163,7 @@ namespace SEDC.UnitTesting.SUT.Tests._04
         {
             return bm.IsLeapYear(year);
         }
-
-
+        
         public static List<TestCaseData> CsvData
         {
             get
@@ -199,14 +195,11 @@ namespace SEDC.UnitTesting.SUT.Tests._04
             }
         }
 
-
         static object[] TestCase =
         {
             new object[] { 1996 , true},
             new object[] { 1999 , false},
             new object[] { 2001 , false},
         };
-
-
     }
 }

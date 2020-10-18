@@ -1,7 +1,6 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using NUnit.Framework;
 
 namespace SEDC.UnitTesting.SUT.Tests._03
 {
@@ -95,7 +94,5 @@ namespace SEDC.UnitTesting.SUT.Tests._03
             //Act + Assertsss
             Assert.Catch<Exception>(() => vm.IsLeapYear(year));
         }
-
-
     }
 }

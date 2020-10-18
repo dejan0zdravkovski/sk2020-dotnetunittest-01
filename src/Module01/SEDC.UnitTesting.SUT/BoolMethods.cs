@@ -14,6 +14,5 @@ namespace SEDC.UnitTesting.SUT
             else
                 return false;
         }
-
     }
 }

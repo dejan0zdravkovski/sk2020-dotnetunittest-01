@@ -1,8 +1,8 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using NUnit.Framework;
+using FluentAssertions;
 
 namespace SEDC.UnitTesting.SUT.Tests
 {
@@ -50,6 +50,5 @@ namespace SEDC.UnitTesting.SUT.Tests
             result.Should().Throw<ArgumentException>();
 
         }
-
     }
 }

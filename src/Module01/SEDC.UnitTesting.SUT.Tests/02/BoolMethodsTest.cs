@@ -1,7 +1,6 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using NUnit.Framework;
 
 namespace SEDC.UnitTesting.SUT.Tests._02
 {
@@ -14,7 +13,6 @@ namespace SEDC.UnitTesting.SUT.Tests._02
         {
             bm = new BoolMethods();
         }
-
 
         [Test]
         public void Test()
@@ -92,7 +90,5 @@ namespace SEDC.UnitTesting.SUT.Tests._02
             //Act + Assertsss
             Assert.Catch<Exception>(() => vm.IsLeapYear(year));
         }
-
-
     }
 }

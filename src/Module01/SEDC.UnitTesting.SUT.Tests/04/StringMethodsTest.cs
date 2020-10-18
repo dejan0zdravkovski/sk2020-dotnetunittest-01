@@ -1,7 +1,6 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using NUnit.Framework;
 
 namespace SEDC.UnitTesting.SUT.Tests._04
 {
@@ -41,14 +40,12 @@ namespace SEDC.UnitTesting.SUT.Tests._04
             Assert.AreEqual(expStr, result);
         }
 
-
         [Test]
         [Category("StringMethods")]
         public void Reverse_StringIsNull_ShouldReturnException()
         {
             Assert.Catch<Exception>(() => sm.Reverse(null));
         }
-
 
         [TestCase("SEDC", "CDES")]
         [TestCase("REDC", "CDER")]
@@ -63,7 +60,5 @@ namespace SEDC.UnitTesting.SUT.Tests._04
         }
 
         //TODO: Add test case for [SetCulture("hr-HR")]
-
-
     }
 }

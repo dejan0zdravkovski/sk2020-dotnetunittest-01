@@ -25,8 +25,6 @@ namespace SEDC.UnitTesting.SUT
 
             return n_2;
         }
-
-
         public int FindNthLargestNumber(List<int> numbers, int nthLargestNumber)
         {
             if (!numbers.Any())

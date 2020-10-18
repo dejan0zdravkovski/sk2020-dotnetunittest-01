@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using NUnit.Framework;
 
 namespace SEDC.UnitTesting.SUT.Tests._02
 {
@@ -58,6 +58,5 @@ namespace SEDC.UnitTesting.SUT.Tests._02
 
             Assert.Throws<ArgumentException>(() => im.FindNthLargestNumber(listNumbers, nthLargestNumber));
         }
-
     }
 }

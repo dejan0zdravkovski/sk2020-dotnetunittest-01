@@ -1,7 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SEDC.UnitTesting.SUT.Tests._02
 {
@@ -26,7 +23,6 @@ namespace SEDC.UnitTesting.SUT.Tests._02
             var ss = "";
         }
 
-
         [TearDown]
         public void TearDown()
         {
@@ -38,11 +34,11 @@ namespace SEDC.UnitTesting.SUT.Tests._02
         {
             Assert.IsTrue(true);
         }
+     
         [Test]
         public void Test2()
         {
             Assert.IsTrue(true);
         }
-
     }
 }

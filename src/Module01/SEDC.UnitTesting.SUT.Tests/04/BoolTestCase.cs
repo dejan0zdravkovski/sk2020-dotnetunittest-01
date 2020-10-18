@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SEDC.UnitTesting.SUT.Tests._04
+﻿namespace SEDC.UnitTesting.SUT.Tests._04
 {
     public class BoolTestCase
     {

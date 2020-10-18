@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using NUnit.Framework;
 
 namespace SEDC.UnitTesting.SUT.Tests._04
 {
@@ -62,13 +62,11 @@ namespace SEDC.UnitTesting.SUT.Tests._04
             Assert.Throws<ArgumentException>(() => im.FindNthLargestNumber(listNumbers, nthLargestNumber));
         }
 
-
         [TestCaseSource(typeof(IntegerTestCase), "Combinations")]
         public void FindNthLargestNumber_TestCaseSource_TheReturnedResultShouldBeCorrect(List<int> listNumbers, int nthLargestNumber, int expectedResult)
         {
             var result = im.FindNthLargestNumber(listNumbers, nthLargestNumber);
             Assert.AreEqual(expectedResult, result);
         }
-
     }
 }

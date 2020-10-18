@@ -1,12 +1,8 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NUnit.Framework;
+using FluentAssertions;
 
 namespace SEDC.UnitTesting.SUT.Tests._05
 {
-
     [TestFixture]
     public class IntegerMethodsTest
     {
@@ -22,7 +18,5 @@ namespace SEDC.UnitTesting.SUT.Tests._05
             //Assert.AreEqual(expectedResult, result);
             result.Should().Equals(expectedResult);
         }
-
     }
-   
 }
