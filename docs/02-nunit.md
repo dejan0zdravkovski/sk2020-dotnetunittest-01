@@ -85,5 +85,5 @@ NUnit Assert class is used to determine whether a particular test method gives e
 
        //Act + Assertsss
         Assert.Catch<Exception>(() => vm.IsLeapYear(year));
-    }
+   }
    ```
