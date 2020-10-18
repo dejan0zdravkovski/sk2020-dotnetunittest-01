@@ -1,14 +1,16 @@
-﻿using Moq;
+﻿using System;
+using System.Collections.Generic;
+
+using Xunit;
+using Moq;
 using SEDC.Travel.Domain.Contract;
 using SEDC.Travel.Domain.Model;
+using SEDC.Travel.Service.Tests.CustomAttributes.Order;
 using SEDC.Travel.Service.Tests.TestFixtureData;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
 
 namespace SEDC.Travel.Service.Tests._03
 {
+    [TestCaseOrderer("SEDC.Travel.Service.Tests.CustomAttributes.Order.PriorityOrderer", "SEDC.Travel.Service.Tests")]
     public class PricingServiceTest : IClassFixture<PricingFixtureData>
     {
         Mock<IPricingRepository> _pricingRepository;
@@ -21,6 +23,7 @@ namespace SEDC.Travel.Service.Tests._03
 
 
         [Fact]
+        [TestPriority(2)]
         public void GetPricingPercent_PeriodAreNotDefined_ResultShouldBe13()
         {
             var fromDate = DateTime.Now.AddDays(10);
@@ -37,6 +40,7 @@ namespace SEDC.Travel.Service.Tests._03
         }
 
         [Fact]
+        [TestPriority(3)]
         public void GetPricingPercent_PeriodAreDefined_ResultShouldBeCorrect()
         {
             var fromDate = new DateTime(2020, 01, 15);
@@ -53,6 +57,7 @@ namespace SEDC.Travel.Service.Tests._03
         }
 
         [Fact]
+        [TestPriority(1)]
         public void GetPricingPercent_PeriodAreDefined_ResultShouldBeCorrectCase1()
         {
             var fromDate = new DateTime(2020, 03, 25);

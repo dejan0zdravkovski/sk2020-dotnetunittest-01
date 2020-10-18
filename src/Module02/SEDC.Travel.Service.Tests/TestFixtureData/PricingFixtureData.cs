@@ -1,7 +1,7 @@
-﻿using SEDC.Travel.Domain.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using SEDC.Travel.Domain.Model;
 
 namespace SEDC.Travel.Service.Tests.TestFixtureData
 {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SEDC.Travel.Service.Tests._03
 {
@@ -15,7 +14,6 @@ namespace SEDC.Travel.Service.Tests._03
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
         
     }
 }

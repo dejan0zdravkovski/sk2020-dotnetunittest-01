@@ -1,14 +1,16 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using Xunit;
 using Moq;
+using FluentAssertions;
 using SEDC.Travel.Domain.Contract;
 using SEDC.Travel.Service.Contract;
 using SEDC.Travel.Service.Model.ThirdParty;
 using SEDC.Travel.Service.Tests.TestFixtureData;
 using SEDC.Travel.Service.ThirdParty;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Xunit;
+
 
 namespace SEDC.Travel.Service.Tests._02
 {
