@@ -1,0 +1,5 @@
+- [Get started with unit testing](https://docs.microsoft.com/en-us/visualstudio/test/getting-started-with-unit-testing?view=vs-2019)
+- [NUnit](https://docs.nunit.org/)
+- [XUnit](https://xunit.net/#documentation)
+- [Moq](https://github.com/Moq/moq4/wiki/Quickstart)
+- [TeamCity creating and editing projects](https://www.jetbrains.com/help/teamcity/creating-and-editing-projects.html)
